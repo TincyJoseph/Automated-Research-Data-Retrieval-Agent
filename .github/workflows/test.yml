@@ -1,17 +1,25 @@
 name: Test before merge
-on: 
+
+on:
   pull_request:
     branches:
       - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     container:
-      image: "node: 20"
+      image: "node:20"
+
     steps:
-     - uses: actions/checkout@v3
-       with:
-         node-version: 20
-     - run: npm ci
-     - run: npm test
-     - run: npm run build
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
