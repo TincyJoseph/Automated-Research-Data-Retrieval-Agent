@@ -1,4 +1,4 @@
-name: Test before merge
+name: Test Project
 
 on:
   pull_request:
@@ -8,18 +8,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     container:
-      image: "node:20"
-
+      image: node:20
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Node
-        uses: actions/setup-node@v3
         with:
           node-version: 20
-
       - run: npm ci
       - run: npm test
       - run: npm run build
