@@ -1,4 +1,4 @@
-name: Test Project
+name: Rag-Learning
 
 on:
   pull_request:
@@ -8,12 +8,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: node:20
+    defaults:
+     run:
+      working-directory: ./app/
+    strategy:
+     matrix:
+      python-version: [3.8,3.9]
+    # env:
+    #   MODE: "dev"
     steps:
       - uses: actions/checkout@v3
+      - name: set up python
+        uses: actions/setup=python@v4
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+         python-version: ${{matrix.python-version}}
+      - name: Install dependencies
+        run: |
+         python -m pip install --upgrade pip
+         python -m pip install -r ../requirements.txt
+      # - name: 
+      #   run: python ./main-test.py
