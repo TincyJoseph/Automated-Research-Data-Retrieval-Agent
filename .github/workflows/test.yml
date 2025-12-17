@@ -17,9 +17,9 @@ jobs:
     # env:
     #   MODE: "dev"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: set up python
-        uses: actions/setup=python@v4
+        uses: actions/setup-python@v4
         with:
          python-version: ${{matrix.python-version}}
       - name: Install dependencies
