@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kerala Travel Bot</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: auto; }
+    #chat { border: 1px solid #ccc; height: 400px; overflow-y: auto; padding: 10px; }
+    input { width: 75%; padding: 8px; }
+    button { padding: 8px; }
+  </style>
+</head>
+<body>
+
+<h2>🌴 Kerala Travel Bot</h2>
+<div id="chat"></div>
+
+<input id="msg" placeholder="Ask about Kerala travel..." />
+<button onclick="send()">Send</button>
+<button onclick="resetChat()">New Chat</button>
+
+<script>
+async function send() {
+  const msg = document.getElementById("msg").value;
+  if (!msg) return;
+
+  document.getElementById("chat").innerHTML += `<p><b>You:</b> ${msg}</p>`;
+  document.getElementById("msg").value = "";
+
+  const res = await fetch("/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message: msg})
+  });
+
+  const data = await res.json();
+  document.getElementById("chat").innerHTML += `<p><b>Bot:</b> ${data.response}</p>`;
+}
+
+async function resetChat() {
+  await fetch("/reset-chat", {method: "POST"});
+  document.getElementById("chat").innerHTML = "";
+}
+</script>
+
+</body>
+</html>

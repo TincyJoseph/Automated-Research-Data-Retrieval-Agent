@@ -1,0 +1,30 @@
+# ---- Virtual Environments ----
+.venv/
+venv/
+env/
+
+# ---- Python Cache ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ---- LangGraph / LangChain ----
+.langgraph_api/
+.langgraph/
+.langgraph_checkpoint/
+
+# ---- Environment Variables ----
+.env
+.env.*
+
+# ---- Logs & Cache ----
+*.log
+*.tmp
+*.cache
+
+# ---- IDE / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
