@@ -24,16 +24,18 @@ Features
 - Debug mode for workflow inspection
 - Extensible architecture for adding new tools
 
+## Project Structure
 
-Project Structure
------------------
+```
 app/agent/
 │
-├── agent.py                    # Agent creation and invokation
-├── tools.py                    # Custom tools (search_knowledge_base and web_search_how_to_reach)
-├── vectorstore.py              # Vector DB initializationcreation and retriever
-├── schemas.py                  # Pydantic response schemas for Structured output
-└── README.txt                  # Project documentation
+├── agent.py          # Agent creation and invocation
+├── tools.py          # Custom tools (search_knowledge_base, web_search_how_to_reach)
+├── vectorstore.py    # Vector DB initialization and retriever
+├── schemas.py        # Pydantic response schemas for structured output
+└── README.md         # Project documentation
+```
+
 
 
 Response Schema
