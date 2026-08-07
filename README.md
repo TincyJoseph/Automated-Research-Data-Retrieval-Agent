@@ -1,4 +1,4 @@
-PROJECT: Kerala Tourism Information Agent
+PROJECT: Travel Information Agent
 ==================================
 
 Overview
